@@ -8,4 +8,4 @@ $color:=Convert color space ($color;To picker color)
 $color:=Convert color space ($color;From picker color)
 ```
 
-**Note**: The conversion is lossy and not symmetrical.
+**Note**: The conversion is lossy and asymmetrical.
