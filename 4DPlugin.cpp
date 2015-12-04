@@ -72,19 +72,20 @@ void Convert_color_space(sLONG_PTR *pResult, PackagePtr pParams)
             tempColor = [tempColor colorUsingColorSpace:[NSColorSpace sRGBColorSpace]];
             [tempColor getRed:&red green:&green blue:&blue alpha:&alpha];
             color = 0x0000
-                    +((NSUInteger)(red      * 255.99999f) << 16)
-                    +((NSUInteger)(green    * 255.99999f) << 8)
-                    + (NSUInteger)(blue     * 255.99999f);
+                    +((NSUInteger)floor((red      * 0xFF) + 0.5f) << 16)
+                    +((NSUInteger)floor((green    * 0xFF) + 0.5f) << 8)
+                    + (NSUInteger)floor((blue     * 0xFF) + 0.5f);
         break;
             //to picker color
         default:
             tempColor = [NSColor colorWithColorSpace:[NSColorSpace sRGBColorSpace]components:components count:4];
             tempColor = [tempColor colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]];
+            
             [tempColor getRed:&red green:&green blue:&blue alpha:&alpha];
             color = 0x0000
-                    +((NSUInteger)(red      * 255.99999f) << 16)
-                    +((NSUInteger)(green    * 255.99999f) << 8)
-                    + (NSUInteger)(blue     * 255.99999f);
+                    +((NSUInteger)floor((red      * 0xFF) + 0.5f) << 16)
+                    +((NSUInteger)floor((green    * 0xFF) + 0.5f) << 8)
+                    + (NSUInteger)floor((blue     * 0xFF) + 0.5f);
         break;
 }
 
