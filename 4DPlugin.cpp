@@ -72,9 +72,9 @@ void Convert_color_space(sLONG_PTR *pResult, PackagePtr pParams)
             tempColor = [tempColor colorUsingColorSpace:[NSColorSpace sRGBColorSpace]];
             [tempColor getRed:&red green:&green blue:&blue alpha:&alpha];
             color = 0x0000
-                    +((NSUInteger)floor((red      * 0xFF) + 0.5f) << 16)
-                    +((NSUInteger)floor((green    * 0xFF) + 0.5f) << 8)
-                    + (NSUInteger)floor((blue     * 0xFF) + 0.5f);
+                    +((NSUInteger)floor((CGFloat)(red      * 0xFF) + 0.5f) << 16)
+                    +((NSUInteger)floor((CGFloat)(green    * 0xFF) + 0.5f) << 8)
+                    + (NSUInteger)floor((CGFloat)(blue     * 0xFF) + 0.5f);
         break;
             //to picker color
         default:
@@ -83,14 +83,12 @@ void Convert_color_space(sLONG_PTR *pResult, PackagePtr pParams)
             
             [tempColor getRed:&red green:&green blue:&blue alpha:&alpha];
             color = 0x0000
-                    +((NSUInteger)floor((red      * 0xFF) + 0.5f) << 16)
-                    +((NSUInteger)floor((green    * 0xFF) + 0.5f) << 8)
-                    + (NSUInteger)floor((blue     * 0xFF) + 0.5f);
+                    +((NSUInteger)floor((CGFloat)(red      * 0xFF) + 0.5f) << 16)
+                    +((NSUInteger)floor((CGFloat)(green    * 0xFF) + 0.5f) << 8)
+                    + (NSUInteger)floor((CGFloat)(blue     * 0xFF) + 0.5f);
         break;
-}
+    }
 
-    
-    
     returnValue.setIntValue(color);
 	returnValue.setReturn(pResult);
 }
